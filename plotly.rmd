@@ -46,7 +46,7 @@ Marianne Corvellec [aut] (<https://orcid.org/0000-0002-1994-3581>),
 Pedro Despouy [aut],
 Plotly Technologies Inc. [cph]  
 维护者：Carson Sievert <cpsievert1@gmail.com>  
-文件地点：CRAN  
+文件版本库：CRAN  
 发布时间：2019-04-10 19:33:05 UTC  
 
 ### R 主题/函数目录：
