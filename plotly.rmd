@@ -195,9 +195,11 @@ add_markers(x = 1.5, y = 1.5) %>%
 add_markers(x = ~x, y = ~y, frame = ~z)
 # it's a good idea to remove smooth transitions when there is
 # no relationship between objects in each view
+# 在目标相互没有联系的时候取消平滑过渡效果是个好主意
 plot_ly(mtcars, x = ~wt, y = ~mpg, frame = ~cyl) %>%
 animation_opts(transition = 0)
 # works the same way with ggplotly
+# 这个和ggplotly是同样的用法
 if (interactive()) {
 p <- ggplot(txhousing, aes(month, median)) +
 geom_line(aes(group = year), alpha = 0.3) +
@@ -228,12 +230,16 @@ which：表明哪一个是想要更改的颜色条
 p <- plot_ly(mtcars, x = ~wt, y = ~mpg, color = ~cyl)
 # pass any colorbar attribute --
 # https://plot.ly/r/reference/#scatter-marker-colorbar
+# 可以从以上的网站找到想要的colorbar属性
 colorbar(p, len = 0.5)
 # Expand the limits of the colorbar
+# 增大colorbar的取值范围
 colorbar(p, limits = c(0, 20))
 # values outside the colorbar limits are considered "missing"
+# 在colorbar取值范围之外的值都被看成是极端值
 colorbar(p, limits = c(5, 6))
 # also works on colorbars generated via a z value
+# 这个函数也可以用在z生成的数值上
 corr <- cor(diamonds[vapply(diamonds, is.numeric, logical(1))])
 plot_ly(x = rownames(corr), y = colnames(corr), z = corr) %>%
 add_heatmap() %>%
@@ -281,18 +287,22 @@ source：一个长度为1字符。可以用event_data()里的参数来提取里�
 例子：
 ```{r}
 # simple example
+# 简单的例子
 ggiris <- qplot(Petal.Width, Sepal.Length, data = iris, color = Species)
 ggplotly(ggiris)
 
 # linked scatterplot brushing
+# 连着抛光几个散点图
 d <- highlight_key(mtcars)
 qplot(data = d, x = mpg, y = wt) %>%
 subplot(qplot(data = d, x = mpg, y = vs)) %>%
 layout(title = "Click and drag to select points") %>%
 highlight("plotly_selected")
 # more brushing (i.e. highlighting) examples
+# 再有几个抛光（重点强调）的例子
 demo("crosstalk-highlight-ggplotly", package = "plotly")
 # client-side linked brushing in a scatterplot matrix
+# 客户端的抛光散点图矩阵的例子
 highlight_key(iris) %>%
 GGally::ggpairs(aes(colour = Species), columns = 1:4) %>%
 ggplotly(tooltip = c("x", "y", "colour")) %>%
@@ -319,14 +329,18 @@ retrace.first：是否将每组的最后一行和组的第一行贴在一起？
 例子：  
 ```{r}
 # note the insertion of new rows with missing values
+# 注意看新插入的行里有缺失数据
 group2NA(mtcars, "vs", "cyl")
 # need to group lines by city somehow!
+# 需要把依据city的线分组！
 plot_ly(txhousing, x = ~date, y = ~median) %>% add_lines()
 # instead of using group_by(), you could use group2NA()
+# 你可以用group2NA()来代替group_by()
 tx <- group2NA(txhousing, "city")
 plot_ly(tx, x = ~date, y = ~median) %>% add_lines()
 
 # add_lines() will ensure paths are sorted by x, but this is equivalent
+# add_lines()会保证出来的图样轨迹是按照x来排序的，但这和之前是一样的
 tx <- group2NA(txhousing, "city", ordered = "date")
 plot_ly(tx, x = ~date, y = ~median) %>% add_paths()
 ```
