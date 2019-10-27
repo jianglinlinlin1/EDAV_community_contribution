@@ -1,29 +1,8 @@
----
-title: ' Chinese Translation of R Packages for Interactie Plots 交互式数据可视化包: plotly & parcoords'
-author: "Han Xu & Lin Jiang"
-date: "`r format(Sys.time(), '%d %B, %Y')`"
-output:
-  html_document:
-    toc: yes
-  pdf_document:
-    latex_engine: xelatex
-    number_sections: yes
-    toc: yes
-  word_document:
-    toc: yes
-  beamer_presentation:
-    fig_width: 6
-    toc: yes
-urlcolor: blue
----
-```{r,echo=FALSE,message=FALSE}
-options("digits" = 5)
-options("digits.secs" = 3)
- 
-```
 
 
+# Chinese Translation of R Packages for Interactie Plots 交互式数据可视化包: plotly & parcoords
 
+Han Xu and Lin Jiang
 
 
 #### 原文件链接: 
